@@ -11,17 +11,13 @@
 function debounce(fn, delay) {
   let lastCalled;
   return (...params) => {
-    const print = () => {
-      fn(...params)
-    }
-    clearTimeout(lastCalled)
-    lastCalled = setTimeout(print, 1000)
-
+    clearTimeout(lastCalled);
+    lastCalled = setTimeout(() => fn(...params), delay);
   }
 }
 
 function onChange(event) {
-  console.log(event.target.value)
+  console.log(event.target.value);
 }
 
 let onChange_wrapper = debounce(onChange, 1000);
